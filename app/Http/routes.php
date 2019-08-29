@@ -57,3 +57,7 @@ Route::get('/basicupdate', function() {
     $post->content = 'This is the content';
     $post->save();
 });
+
+Route::get('/create', function() {
+    Post::create(['title'=>'here is our new title', 'content'=>'and here is the content']);
+});
