@@ -35,3 +35,25 @@ Route::get('/findwhere/{id}', function($id) {
     $posts = Post::where('id', $id)->orderBy('id', 'DESC')->take(1)->get();
     return $posts;
 });
+
+Route::get('/findmore', function() {
+    $posts = Post::findOrFail(1);
+
+    return $posts;
+});
+
+Route::get('/basicinsert', function() {
+    $post = new Post;
+
+    $post->title = 'This is from the basic insert route';
+    $post->content = 'This is the content';
+    $post->save();
+});
+
+Route::get('/basicupdate', function() {
+    $post = Post::find(3);
+
+    $post->title = 'This is from the basic insert route';
+    $post->content = 'This is the content';
+    $post->save();
+});
