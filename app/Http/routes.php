@@ -65,3 +65,12 @@ Route::get('/create', function() {
 Route::get('/update/{num}', function($num) {
     Post::where('id', $num)->update(['title'=>'updated', 'content'=>'also updated']);
 });
+
+Route::get('/delete/{id}', function($id) {
+    $post = Post::find($id);
+    $post->delete();
+});
+
+Route::get('/softdelete/{id}', function($id) {
+    Post::find($id)->delete();
+});
