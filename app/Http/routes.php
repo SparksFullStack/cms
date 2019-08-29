@@ -61,3 +61,7 @@ Route::get('/basicupdate', function() {
 Route::get('/create', function() {
     Post::create(['title'=>'here is our new title', 'content'=>'and here is the content']);
 });
+
+Route::get('/update/{num}', function($num) {
+    Post::where('id', $num)->update(['title'=>'updated', 'content'=>'also updated']);
+});
