@@ -1,5 +1,7 @@
 <?php
 use App\Post;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -73,4 +75,9 @@ Route::get('/delete/{id}', function($id) {
 
 Route::get('/softdelete/{id}', function($id) {
     Post::find($id)->delete();
+});
+
+Route::get('/user/{id}/post', function($id) {
+    return User::find($id)->post;
+
 });
