@@ -79,5 +79,10 @@ Route::get('/softdelete/{id}', function($id) {
 
 Route::get('/user/{id}/post', function($id) {
     return User::find($id)->post;
+});
 
+Route::get('/post/{id}/user', function($id) {
+    $user = Post::find($id)->user;
+
+    return $user;
 });
