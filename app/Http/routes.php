@@ -102,6 +102,6 @@ Route::get('/posts/one_to_many', function() {
     $user = User::find(1);
 
     foreach ($user->posts as $post) {
-        return $post;
+        echo $post;
     }
 });
