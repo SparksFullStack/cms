@@ -24,11 +24,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // * One to One Relationship
     public function post(){
         return $this->hasOne('App\Post');
     }
 
+    // * One to Many Relationship
     public function posts() {
         return $this->hasMany('App\Post');
+    }
+
+    // * Accessing the Pivot Table
+    public function roles() {
+        return $this->belongsToMany('App\Role');
     }
 }

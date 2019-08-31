@@ -98,10 +98,16 @@ Route::get('/', function () {
 //     return $posts;
 // });
 
+// * One to Many Relationship
 Route::get('/posts/one_to_many', function() {
     $user = User::find(1);
 
     foreach ($user->posts as $post) {
         echo $post;
     }
+});
+
+// * Pivot Table Route
+Route::get('/users/role/{id}', function($id) {
+    return User::find($id)->roles;
 });
