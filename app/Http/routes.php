@@ -107,7 +107,7 @@ Route::get('/posts/one_to_many', function() {
     }
 });
 
-// * Pivot Table Route
+// * Pivot Table Route 
 Route::get('/users/role/{id}', function($id) {
     return User::find($id)->roles;
 });
