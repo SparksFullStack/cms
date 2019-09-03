@@ -1,6 +1,7 @@
 <?php
 use App\Post;
 use App\User;
+use App\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,4 +111,13 @@ Route::get('/posts/one_to_many', function() {
 // * Pivot Table Route 
 Route::get('/users/role/{id}', function($id) {
     return User::find($id)->roles;
+});
+
+// * Has Many Through Route
+Route::get('/user/country', function() {
+    $country = Country::find(1);
+
+    foreach ($country->posts as $post) {
+        return $post->title;
+    }
 });
