@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+Use App\Post;
 class PostsController extends Controller
 {
     /**
@@ -11,7 +12,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return 'this is the index method';
+        $allPosts = Post::all();
+        return view('posts.index', compact('allPosts'));
     }
     /**
      * Show the form for creating a new resource.
@@ -20,7 +22,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        // NOTE: You can use "posts.create" or "posts/create" for these nested views
+        return view('posts.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -30,7 +33,21 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // * Save Method 1
+        // $newPostRecord;
+        // $newPostRecord['title'] = $request->title;
+        // $newPostRecord['content'] = $request->content;
+        // return $newPostRecord;
+        
+        // * Save Method 2
+        // $newPostRecord = new Post;
+        // $newPostRecord->title = $request->title;
+        // $newPostRecord->content = $request->content;
+        // $newPostRecord->save();
+
+        // * Save Method 3
+        Post::create($request->all());
+        return redirect('/posts');
     }
     /**
      * Display the specified resource.
