@@ -15,7 +15,7 @@ use App\Country;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('contact');
 });
 
 // Route::get('/test', function() {
@@ -100,24 +100,27 @@ Route::get('/', function () {
 // });
 
 // * One to Many Relationship
-Route::get('/posts/one_to_many', function() {
-    $user = User::find(1);
+// Route::get('/posts/one_to_many', function() {
+//     $user = User::find(1);
 
-    foreach ($user->posts as $post) {
-        echo $post;
-    }
-});
+//     foreach ($user->posts as $post) {
+//         echo $post;
+//     }
+// });
 
 // * Pivot Table Route 
-Route::get('/users/role/{id}', function($id) {
-    return User::find($id)->roles;
-});
+// Route::get('/users/role/{id}', function($id) {
+//     return User::find($id)->roles;
+// });
 
 // * Has Many Through Route
-Route::get('/user/country', function() {
-    $country = Country::find(1);
+// Route::get('/user/country', function() {
+//     $country = Country::find(1);
 
-    foreach ($country->posts as $post) {
-        return $post->title;
-    }
-});
+//     foreach ($country->posts as $post) {
+//         return $post->title;
+//     }
+// });
+
+// * CRUD Portion
+Route::resource('/posts', 'PostsController');

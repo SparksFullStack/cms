@@ -41,6 +41,8 @@ class PostsController extends Controller
     public function show($id)
     {
         //
+        $post = App\Post::whereId($id);
+        return $post;
     }
     /**
      * Show the form for editing the specified resource.
